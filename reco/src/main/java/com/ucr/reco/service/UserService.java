@@ -19,14 +19,7 @@ public class UserService {
         return repository.findAll();
     }
 
-    /*
-        public User add(User user){
-            if(repository.existsByEmail(user.getEmail())){
-                return null;
-            }
-            return repository.save(user);
-        }
-    */
+
     public User add(UserDTO user) {
 
         if (repository.existsByEmail(user.getEmail())) {
@@ -38,7 +31,7 @@ public class UserService {
         }
         User userTemp = new User(user.getName(), user.getEmail(), user.getPassword(), user.getRole());
         return repository.save(userTemp);
-        //return "Proceso exitoso";
+
     }
 
     public User getById(Integer id) {
@@ -46,9 +39,7 @@ public class UserService {
         if (user != null) {
             return user;
         }
-        /*if (repository.existsById(id)) {
-            return repository.findById(id).get();
-        }*/
+
         return null;
     }
 
